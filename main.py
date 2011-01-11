@@ -22,6 +22,7 @@ class PhotoOfTheDay:
         client = gconf.client_get_default()
         ng = NationalGeographic()
         link = ng.today_link() 
+        if not link: return
         data = urllib2.urlopen(link).read()
         filename = "/tmp/photoofthetoday"
         open(filename, "wb").write(data)
@@ -36,6 +37,7 @@ class NationalGeographic:
         soup = BeautifulSoup(page)
         for link in soup('div', {'class': 'download_link'}):
             return link.contents[0]['href']
+        return None 
 
 if __name__ == "__main__":
     PhotoOfTheDay.set()
