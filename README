@@ -1,0 +1,23 @@
+== About ==
+This is a very simple script to change the background picture of gnome.
+The wallpapers are downloaded from National Geographic's official site,
+i.e. the photo of the day column. The copyright of photos downloaded belongs
+to the National Geographic. Do not abuse it. More info can be obtained from:
+    http://photography.nationalgeographic.com/photography/photo-of-the-day
+
+== Scripts ==
+crontab -l | { cat; echo "0 0 0 0 0 /dir/to/main.py > /dev/null"; } | crontab -
+
+== License ==
+This software is published under GPLv2. You can refer here for a full version:
+    www.gnu.org/licenses/gpl-2.0.html
+
+== Support ==
+I do not supply technical support for this tiny software. So any side-effects
+caused by this scripts should be your problems. However, you can contact me
+for discussion.
+
+Leon(Mingliang Liu)
+liuml07@gmail.com
+
+Fin.
