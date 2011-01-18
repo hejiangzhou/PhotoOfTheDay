@@ -1,15 +1,7 @@
 #!/usr/bin/env python
+
 #
 # The wallpaper changer (c) Mingliang Liu 2010 <liuml07@gmail.com>
-# @date Tue Jan 11 05:14:24 CST 2011
-#
-# INFO:
-#   This is a very simple script to change the background picture of gnome
-#   The wallpapers are downloaded from National Geographic's official site,
-#   i.e. the photo of the day. The copyright of photos downloaded belongs to
-#   the National Geographic. Do not abuse it. More info can be obtained from:
-#
-#   http://photography.nationalgeographic.com/photography/photo-of-the-day
 #
 
 import gconf
