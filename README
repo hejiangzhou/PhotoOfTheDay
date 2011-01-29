@@ -6,7 +6,7 @@ to the National Geographic. Do not abuse it. More info can be obtained from:
     http://photography.nationalgeographic.com/photography/photo-of-the-day
 
 == Scripts ==
-crontab -l | { cat; echo "0 0 * * * /dir/to/main.py > /dev/null"; } | crontab -
+Run the autoset.sh script to run this script automatically.
 
 == License ==
 This software is published under GPLv2. You can refer here for a full version:
