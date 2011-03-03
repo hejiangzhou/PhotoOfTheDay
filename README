@@ -17,6 +17,10 @@ I do not supply technical support for this tiny software. So any side-effects
 caused by this scripts should be your problems. However, you can contact me
 for discussion.
 
+== Credits ==
+ - Thanks to Jiangzhou He, for his advise to set fetch the primary picture if
+ no full-size one is provided.
+
 Leon(Mingliang Liu)
 liuml07@gmail.com
 
