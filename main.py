@@ -29,6 +29,9 @@ class NationalGeographic:
         soup = BeautifulSoup(page)
         for link in soup('div', {'class': 'download_link'}):
             return link.contents[0]['href']
+        for link in soup('div', {'class': 'primary_photo'}):
+            print link.contents[1].contents[1]
+            return link.contents[1].contents[1]['src']
         return None 
 
 if __name__ == "__main__":
