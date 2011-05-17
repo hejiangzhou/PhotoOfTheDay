@@ -4,40 +4,47 @@
 # The wallpaper changer (c) Mingliang Liu 2010 <liuml07@gmail.com>
 #
 
-import gconf
 import urllib2
 from BeautifulSoup import BeautifulSoup
 
 class PhotoOfTheDay:
-    def __init__(self, xdm):
+    def __init__(self, xdm, wide_scale=1.3):
         self.url = "http://photography.nationalgeographic.com/photography/photo-of-the-day/"
         self.xdm = xdm
+        self.wide_scale = wide_scale
 
-    def today_link(self):
+    def today_file(self):
         page = urllib2.urlopen(self.url)
         soup = BeautifulSoup(page)
-        for link in soup('div', {'class': 'download_link'}):
-            return link.contents[0]['href']
+        link = None
+        s = soup('div', {'class': 'download_link'})
+        link = s[0].contents[0]['href']
         # If no full-size image downloadable, use primary photo
-        for link in soup('div', {'class': 'primary_photo'}):
-            return link.contents[1].contents[1]['src']
-        return None 
+        if not link:
+            s = soup('div', {'class': 'primary_photo'})
+            link = s[0].contents[1].contents[1]['src']
+        if not link: return None
+        data = urllib2.urlopen(link).read()
+        filename = "/tmp/photooftheday"
+        open(filename, "wb").write(data)
+        from PIL import Image
+        image = Image.open(filename)
+        if image.size[0] / float(image.size[1]) < self.wide_scale:
+            return None
+        return filename 
 
     def set_gnome(self):
+        f = self.today_file()
+        if not f: return
+        import gconf
         client = gconf.client_get_default()
-        link = self.today_link() 
-        if not link: return
-        data = urllib2.urlopen(link).read()
-        filename = "/tmp/photoofthetoday"
-        open(filename, "wb").write(data)
-        client.set_string("/desktop/gnome/background/picture_filename",
-                filename)
+        client.set_string("/desktop/gnome/background/picture_filename", f)
 
     def set(self):
         if not cmp(self.xdm, "GNOME"):
             self.set_gnome()
         else:
-            print "Not supported xdm: ", self.xdm
+            print ("Not supported xdm: %s" % self.xdm)
 
 if __name__ == "__main__":
     # Set your xdm here, GNOME or KDE
