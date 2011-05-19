@@ -18,7 +18,8 @@ class PhotoOfTheDay:
         soup = BeautifulSoup(page)
         link = None
         s = soup('div', {'class': 'download_link'})
-        link = s[0].contents[0]['href']
+        if len(s) > 0:
+            link = s[0].contents[0]['href']
         # If no full-size image downloadable, use primary photo
         if not link:
             s = soup('div', {'class': 'primary_photo'})

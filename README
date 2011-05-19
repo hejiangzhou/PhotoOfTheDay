@@ -1,18 +1,21 @@
 == About ==
-This is a very simple script to change the background picture of gnome.
-The wallpapers are downloaded from National Geographic's official site,
-i.e. the photo of the day column. The copyright of photos downloaded belongs
-to the National Geographic. Do not abuse it. More info can be obtained from:
+This is a very simple script to change the background picture of Linux
+desktop. The wallpapers are downloaded from National Geographic's official
+site, i.e. the photo of the day column. The copyright of photos downloaded
+belongs to the National Geographic. Do not abuse it. See also:
     http://photography.nationalgeographic.com/photography/photo-of-the-day
-
-== Scripts ==
-Run the autoset.sh script to run this script automatically.
 
 == License ==
 This software is published under GPLv2. You can refer here for a full version:
     www.gnu.org/licenses/gpl-2.0.html
 
 == Support ==
+Run the autoset.sh script to run this script automatically. Modify it first.
+You need the following module to use this software:
+ - Beautifulsoup-3.2+
+ - gconf module for GNOME xdm
+ - Python Imaging Library (PIL)
+ - urllib2
 I do not supply technical support for this tiny software. So any side-effects
 caused by this scripts should be your problems. However, you can contact me
 for discussion.
@@ -20,6 +23,9 @@ for discussion.
 == Credits ==
  - Thanks to Jiangzhou He, for his advise to set fetch the primary picture if
  no full-size one is provided.
+ - Thanks to Yangyang Zhao (angelbear198703@gmail.com), for his work to port
+ it to Mac.
+
 
 Leon(Mingliang Liu)
 liuml07@gmail.com
